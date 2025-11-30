@@ -1,13 +1,12 @@
 package it.sara.demo.web.user.response;
 
-import it.sara.demo.web.response.GenericResponse;
 import it.sara.demo.web.user.request.LoginRequest;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class LoginResponse extends GenericResponse {
+public class LoginResponse {
     public String token;
     public String username;
     public LoginRequest.Role role;

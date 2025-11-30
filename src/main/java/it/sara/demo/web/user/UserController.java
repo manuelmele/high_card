@@ -40,13 +40,13 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/v1/search-users"}, method = RequestMethod.POST)
-    public GetUsersResult getUsers(@Valid @RequestBody GetUsersRequest request) throws GenericException {
+    public GetUsersResult getUsers(@Valid @RequestBody GetUsersRequest request) {
         CriteriaGetUsers criteria = getUsersAssembler.toCriteria(request);
         return userService.getUsers(criteria);
     }
 
     @RequestMapping(value = {"/v1/get-users"}, method = RequestMethod.GET)
-    public List<UserDTO> getAllUsers() throws GenericException {
+    public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
 

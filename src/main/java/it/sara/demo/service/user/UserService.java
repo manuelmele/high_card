@@ -26,17 +26,15 @@ public interface UserService {
      * @param criteriaGetUsers the criteria defining the parameters for fetching users,
      *                         including query string, offset, limit, and order type
      * @return a result object containing the list of users, total count, offset, and limit
-     * @throws GenericException if an error occurs during the retrieval process
      */
-    GetUsersResult getUsers(CriteriaGetUsers criteriaGetUsers) throws GenericException;
+    GetUsersResult getUsers(CriteriaGetUsers criteriaGetUsers);
 
     /**
      * Retrieves a list of all existing users.
      *
      * @return a list of UserDTO objects representing all users
-     * @throws GenericException if an error occurs during the retrieval process
      */
-    List<UserDTO> getAllUsers() throws GenericException;
+    List<UserDTO> getAllUsers();
 
     /**
      * Retrieves a user based on the given unique identifier.
