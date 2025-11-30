@@ -8,7 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.spy;
 
 @ExtendWith(MockitoExtension.class)
 public class UserRepositoryTest {
@@ -21,8 +20,8 @@ public class UserRepositoryTest {
     @Test
     void testGetPaginated_NoFilteringNoSorting() {
         // Arrange
-        UserRepository userRepository = spy(UserRepository.class);
-        populateDatabase(userRepository);
+        UserRepository userRepository = new UserRepository();
+        populateDatabase();
 
         CriteriaGetUsers criteria = new CriteriaGetUsers();
         criteria.setQuery(""); // No filtering
@@ -42,8 +41,8 @@ public class UserRepositoryTest {
     @Test
     void testGetPaginated_FilteringByFirstName() {
         // Arrange
-        UserRepository userRepository = spy(UserRepository.class);
-        populateDatabase(userRepository);
+        UserRepository userRepository = new UserRepository();
+        populateDatabase();
 
         CriteriaGetUsers criteria = new CriteriaGetUsers();
         criteria.setQuery("bob"); // Filter by first name "Bob"
@@ -63,8 +62,8 @@ public class UserRepositoryTest {
     @Test
     void testGetPaginated_SortingByLastNameDescending() {
         // Arrange
-        UserRepository userRepository = spy(UserRepository.class);
-        populateDatabase(userRepository);
+        UserRepository userRepository = new UserRepository();
+        populateDatabase();
 
         CriteriaGetUsers criteria = new CriteriaGetUsers();
         criteria.setQuery(""); // No filtering
@@ -84,8 +83,8 @@ public class UserRepositoryTest {
     @Test
     void testGetPaginated_Pagination() {
         // Arrange
-        UserRepository userRepository = spy(UserRepository.class);
-        populateDatabase(userRepository);
+        UserRepository userRepository = new UserRepository();
+        populateDatabase();
 
         CriteriaGetUsers criteria = new CriteriaGetUsers();
         criteria.setQuery(""); // No filtering
@@ -105,8 +104,8 @@ public class UserRepositoryTest {
     @Test
     void testGetPaginated_EmptyDatabase() {
         // Arrange
-        UserRepository userRepository = spy(UserRepository.class);
-        emptyDatabase(userRepository);
+        UserRepository userRepository = new UserRepository();
+        emptyDatabase();
 
         CriteriaGetUsers criteria = new CriteriaGetUsers();
         criteria.setQuery("");
@@ -122,11 +121,11 @@ public class UserRepositoryTest {
         assertEquals(0, result.getUsers().size());
     }
 
-    private void emptyDatabase(UserRepository userRepository) {
+    private void emptyDatabase() {
         FakeDatabase.TABLE_USER.clear();
     }
 
-    private void populateDatabase(UserRepository userRepository) {
+    private void populateDatabase() {
         FakeDatabase.TABLE_USER.clear();
 
         User user1 = new User();
