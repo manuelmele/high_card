@@ -17,4 +17,13 @@ public class GenericResponse {
         returnValue.getStatus().setTraceId(java.util.UUID.randomUUID().toString());
         return returnValue;
     }
+
+    public static GenericResponse error(int code, String message) {
+        GenericResponse returnValue = new GenericResponse();
+        returnValue.setStatus(new StatusDTO());
+        returnValue.getStatus().setCode(code);
+        returnValue.getStatus().setMessage(message != null ? message : "Success");
+        returnValue.getStatus().setTraceId(java.util.UUID.randomUUID().toString());
+        return returnValue;
+    }
 }
